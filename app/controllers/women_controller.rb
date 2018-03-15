@@ -1,0 +1,2 @@
+class WomenController < ApplicationController
+end

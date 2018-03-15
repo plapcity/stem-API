@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  database: stem_db
+  password: stemPASS
+  username: stem
+
+development:
+  <<: *default
+
+
+production:
+  <<: *default
+
+staging:
+  <<: *default
+
+test: &test
+  <<: *default
+  database: stem_db_test
