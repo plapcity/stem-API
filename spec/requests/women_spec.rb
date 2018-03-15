@@ -7,9 +7,9 @@ RSpec.describe 'Women API', type: :request do
 	let(:woman_id) { women.first.id }
 
 	#Test suite for GET /women
-	describe 'GET /women' do 
+	describe 'GET /api/women' do 
 		# make HTTP get request before each example
-		before { get '/women'}
+		before { get '/api/women'}
 
 		it 'returns women' do 
 			#note 'json' is a custom helper to parse JSON requests
@@ -23,8 +23,8 @@ RSpec.describe 'Women API', type: :request do
 	end
 
 	#Test suite for GET /women/:id
-	describe 'GET /women/:id' do
-		before {get "/women/#{woman_id}"}
+	describe 'GET /api/women/:id' do
+		before {get "/api/women/#{woman_id}"}
 
 		context 'when the record exists' do
 			it 'returns the woman' do
@@ -51,11 +51,11 @@ RSpec.describe 'Women API', type: :request do
 	end
 
 	#Test suite for POST /women
-	describe 'POST /women' do
+	describe 'POST /api/women' do
 		let (:valid_attributes) { {name: 'Perri Lapidus', bio: 'I am a developer', image_src: 'https://lorempixel.com/50/60'}}
 
 		context 'when the request is valid' do
-			before {post '/women', params: valid_attributes}
+			before {post '/api/women', params: valid_attributes}
 
 			it 'creates a woman' do 
 				expect(json['name']).to eq('Perri Lapidus')
@@ -68,7 +68,7 @@ RSpec.describe 'Women API', type: :request do
 
 		context 'when request is invalid' do
 
-			before { post '/women', params: { bio: 'this is a bio'} }
+			before { post '/api/women', params: { bio: 'this is a bio'} }
 
 			it 'returns status code 422' do
 				expect(response).to have_http_status(422)
@@ -82,11 +82,11 @@ RSpec.describe 'Women API', type: :request do
 	end
 
 	# Test suite for PUT /women/:id
-	describe 'PUT /women/:id' do
+	describe 'PUT /api/women/:id' do
 		let(:valid_attributes) { { name: 'Barack Obama' } }
 
 		context 'when the record exists' do
-			before { put "/women/#{woman_id}", params: valid_attributes }
+			before { put "/api/women/#{woman_id}", params: valid_attributes }
 
 			it 'updates the record' do
 				expect(response.body).to be_empty
@@ -99,8 +99,8 @@ RSpec.describe 'Women API', type: :request do
 	end
 
 	#Test suite for DELETE /women/:id
-	describe 'DELETE /women/:id' do
-		before {delete "/women/#{woman_id}"}
+	describe 'DELETE /api/women/:id' do
+		before {delete "/api/women/#{woman_id}"}
 
 		it 'returns status code 204' do
       expect(response).to have_http_status(204)
