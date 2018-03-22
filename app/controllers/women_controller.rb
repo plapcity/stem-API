@@ -21,9 +21,11 @@ class WomenController < ApplicationController
 	#PUT /women/:id
 	def update
 		@woman.update(woman_params)
-		head :no_content
+		# head :no_content
+		json_response(@woman)
 	end
 
+	#DELETE /women/:id
 	def destroy
 		@woman.destroy
 		head :no_content

@@ -1,1 +1,2 @@
-ActiveModel::Serializer.config.adapter = ActiveModelSerializers::Adapter::JsonApi
+# NO LONGER USING JSONAPI BECAUSE OF HOW IT STRUCTURED THE JSON. 
+ActiveModel::Serializer.config.default_includes = '**'
